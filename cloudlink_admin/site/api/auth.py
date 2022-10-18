@@ -1,7 +1,8 @@
-from sanic.response import json
-from multipledispatch import dispatch
-
 import time
+
+from multipledispatch import dispatch
+from sanic.response import json
+
 
 @dispatch(callable)
 def protected(func):

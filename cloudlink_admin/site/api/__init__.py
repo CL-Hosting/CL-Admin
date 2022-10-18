@@ -1,30 +1,27 @@
-from sanic import Sanic
-from sanic_ext import openapi
-from sanic.response import json
-from sanic import Request
 from cloudlink.server import Server
+from sanic import Blueprint, Request
+from sanic.response import json
+
 from .auth import protected
 
-import time
+_SANIC = Blueprint(url_prefix="admin/api/", v=1)
 
-
-
-_SANIC = Sanic("cloudlink_admin")
 
 class Admin_API:
   def __init__(self, cloudlink:Server):
     self.cl = cloudlink
     self.db = cloudlink.db
     _SANIC.ctx.db = self.db
-  
-  @_SANIC.get("/api/v1/admin/actions/")
+
+  @_SANIC.get("actions/")
   @protected
   async def last_actions(self, req):
     actions = self.db.actions.find_many({}).limit(10)
     return json(actions)
     
   
-  @_SANIC.get("/api/v1/db/<collection>")
+  @_SANIC.get("db/<collection>")
+  @protected
   async def get_collection(self, req:Request, collection):
     """gets a collection from the database
 
@@ -79,8 +76,7 @@ class Admin_API:
     except Exception as e:
       return json({"type": str(e.__class__.__name__), "error":str(e), "status":500}, status=500)
 
-  @_SANIC.post("/api/v1/db/<collection>")
-  @openapi.description("Create new item in the collection")
+  @_SANIC.post("db/<collection>")
   @protected
   async def post_collection(self, req:Request, collection):
     """creates a new item in the database
@@ -133,7 +129,7 @@ class Admin_API:
     except Exception as e:
       return json({"type": str(e.__class__.__name__), "error":str(e), "status":500}, status=500)
 
-  @_SANIC.put("/api/v1/db/<collection>")
+  @_SANIC.put("/db/<collection>")
   @protected
   async def put_collection(self, req:Request, collection):
     """updates an item in the database
