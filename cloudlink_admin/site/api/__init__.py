@@ -82,7 +82,7 @@ class Admin_API:
         except KeyError as e:
             return json({"type": "KeyError", "error": e, "status": 400}, status=400)
 
-        except Exception as e: # type: ignore
+        except Exception as e:  # type: ignore
             return json(
                 {"type": str(e.__class__.__name__), "error": str(e), "status": 500},
                 status=500,
@@ -144,7 +144,7 @@ class Admin_API:
 
         except KeyError as e:
             return json({"type": "KeyError", "error": e, "status": 400}, status=400)
-        except Exception as e: # type: ignore
+        except Exception as e:  # type: ignore
             return json(
                 {"type": str(e.__class__.__name__), "error": str(e), "status": 500},
                 status=500,
@@ -212,7 +212,7 @@ class Admin_API:
 
         except KeyError as e:
             return json({"type": "KeyError", "error": e, "status": 400}, status=400)
-        except Exception as e: # type: ignore 
+        except Exception as e:  # type: ignore
             return json(
                 {"type": str(e.__class__.__name__), "error": str(e), "status": 500},
                 status=500,
