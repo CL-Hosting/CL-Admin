@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from cloudlink.server import server as Server
 from cloudlink.server.suit import SuitDB  # type: ignore
 from sanic import Blueprint, Request

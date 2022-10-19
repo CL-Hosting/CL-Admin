@@ -4,8 +4,7 @@ from __future__ import annotations
 import time
 
 from multipledispatch import dispatch
-from sanic.response import json, HTTPResponse, empty
-from sanic import Request
+from sanic.response import json, HTTPResponse
 
 
 @dispatch(callable)
