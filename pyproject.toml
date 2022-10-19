@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cl-admin"
+version = "0.1.0"
+description = ""
+authors = ["ShowierData9978 <mellfang36@outlook.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+cloudlink = "^0.1.8"
+sanic = {extras = ["ext"], version = "^22.9.0"}
+multipledispatch = "^0.6.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
