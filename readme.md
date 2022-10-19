@@ -14,6 +14,8 @@ Add badges from somewhere like: [shields.io](https://shields.io/)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![Discord](https://img.shields.io/discord/1016024200726712451)
+[![DeepSource](https://deepsource.io/gh/CL-Hosting/CL-Admin.svg/?label=active+issues&show_trend=true&token=LwpueSp58hBqESn7aI4FLxzR)](https://deepsource.io/gh/CL-Hosting/CL-Admin/?ref=repository-badge)
+
 ## Authors
 
 - [@ShowierData9978](https://www.github.com/ShowierData9978)
