@@ -1,9 +1,13 @@
+"""
+The API for the CloudLink Admin site.
+  
+"""
 from __future__ import annotations
 
 from cloudlink.server import server as Server
 from cloudlink.server.suit import SuitDB  # type: ignore
 from sanic import Blueprint, Request
-from sanic.response import json, HTTPResponse, empty
+from sanic.response import HTTPResponse, empty, json
 
 from .auth import protected
 
@@ -78,7 +82,7 @@ class Admin_API:
         except KeyError as e:
             return json({"type": "KeyError", "error": e, "status": 400}, status=400)
 
-        except Exception as e:
+        except Exception as e: # type: ignore
             return json(
                 {"type": str(e.__class__.__name__), "error": str(e), "status": 500},
                 status=500,
@@ -140,7 +144,7 @@ class Admin_API:
 
         except KeyError as e:
             return json({"type": "KeyError", "error": e, "status": 400}, status=400)
-        except Exception as e:
+        except Exception as e: # type: ignore
             return json(
                 {"type": str(e.__class__.__name__), "error": str(e), "status": 500},
                 status=500,
@@ -154,7 +158,7 @@ class Admin_API:
 
     :auth:
         level: 3 (admin)
-    
+
     :param collection:
       the name of the collection to update the item in
 
@@ -162,7 +166,7 @@ class Admin_API:
       :param query:
         the query to filter the collection
       sets only the first element for a query
-    
+
     :query optinal query:
         the query to filter the collection
 
@@ -173,7 +177,7 @@ class Admin_API:
         - error
         - type
         - status
-    
+
     """ ""
 
         try:
@@ -208,7 +212,7 @@ class Admin_API:
 
         except KeyError as e:
             return json({"type": "KeyError", "error": e, "status": 400}, status=400)
-        except Exception as e:
+        except Exception as e: # type: ignore 
             return json(
                 {"type": str(e.__class__.__name__), "error": str(e), "status": 500},
                 status=500,
@@ -229,7 +233,7 @@ class Admin_API:
       :param query:
         the query to filter the collection
       sets only the first element for a query
-    
+
     :query optinal query:
         the query to filter the collection
 
@@ -239,7 +243,7 @@ class Admin_API:
         - error
         - type
         - status
-    
+
     """ ""
         try:
             if "one" in req.args:

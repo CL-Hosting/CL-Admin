@@ -1,10 +1,13 @@
-from __future__ import annotations
+"""authentication utils"""
 
+from __future__ import annotations
 
 import time
 
 from multipledispatch import dispatch
-from sanic.response import json, HTTPResponse
+from sanic.response import HTTPResponse, json
+
+CammelCase = None
 
 
 @dispatch(callable)
@@ -56,7 +59,7 @@ def protected(func: callable[HTTPResponse]) -> callable[HTTPResponse]:  # type: 
 
 
 @protected.register(int)
-def _(lvl:int) -> callable[callable[HTTPResponse]]:  # type: ignore[type-arg]
+def _(lvl: int) -> callable[callable[HTTPResponse]]:  # type: ignore[type-arg]
     def inner(func: callable[HTTPResponse]) -> callable[HTTPResponse]:  # type: ignore[type-arg]
         def wrapper(req, *args, **kwargs):
             if not req.token:
